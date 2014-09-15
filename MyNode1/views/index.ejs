@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html> 
+<body>
+<% var message; 
+    if(message) { %>
+    <%= message %>
+<% } %>
+
+<p><%= title %></p>
+
+<!--<select name="item" id="itemId">
+<option value="0">Select Item</option>
+</select>
+<script>
+<% for(var i=0; i<10; i++) {%>
+
+   	var val = document.getElementById("itemId");
+	var option = document.createElement("option");
+	option.text = "<%=menuitem[i].name%>";
+	val.add(option);
+<% } %> 
+
+</script> -->
+
+
+<script>
+
+function print(obj)
+{	
+	var val = document.getElementById(obj).value;
+	alert(val+" "+obj);
+	
+	document.getElementById('price_val').value = val;
+	document.getElementById('item_id').value = obj;
+}
+</script>
+
+<form action="/submitprice" method="post">
+<input name="price_name" type="hidden" value=" " id="price_val" >
+<input name="item_name" type="hidden" value=" " id="item_id" >
+<table border="1" style="width:300px">
+<!-- <script>
+<% for(var j=0; j<menuitem.length; j++) {%> -->
+<tr>
+<td><%=menuitem[j].Name%></td>
+<td><input type="text" value="<%=menuitem[j].Price%>" size=3 id="<%=menuitem[j].MenuItemId%>" onChange="print(this.id)"></td>
+</tr>
+<!-- <% } %> 
+</script> -->
+</table>
+<div><input type="submit" value="Update"/></div>
+</form>
+
+<form action="/">
+<div><input type="submit" value="Refresh"/></div>
+
+</body>
+</html>

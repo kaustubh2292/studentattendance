@@ -1,0 +1,15 @@
+{
+  "routes":
+  [
+    { "path": "/", "callback": "application#show" },
+    { "path": "/submitprice", "method": "post", "callback": "application#update" }
+  ],
+  "filters":
+  [
+  	 { "path": "/", "callback": "" }
+  ],
+  "websockets":
+  [
+  	{ "event": "", "callback": ""}
+  ]
+}
