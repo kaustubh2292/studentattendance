@@ -4,11 +4,6 @@ ACS.initACS('BbvuMbjM1FVO9HGwqjlCjdIfL44i54Hs');
 
 function show(req,res){
 	var menulist = [];
-	ACS.Users.login({
-    	login: 'nybistroadmin',
-    	password: 'admin1234'
-	}, function (e) {
-    	if (e.success) {
     	ACS.Objects.query({
 	 		classname : 'MenuItem',
 	 	}, function(e) {
@@ -33,68 +28,5 @@ function show(req,res){
 				
 				
 			}
-	 	});
-    	} else {
-        	 console.log("Error to login: " + e.message);
-    	}
-	}, req, res);
-}
-
-
-function update(req,res){
-	
-	var pricetag = req.body.price_name;
-	var itemid = req.body.item_name;
-	console.log("Price of item ==== " + pricetag + " === "+ itemid);
-	
-	ACS.Users.login({
-    	login: 'nybistroadmin',
-    	password: 'admin1234'
-	}, function (e) {
-    	if (e.success) {
-    		console.log("In update login>>>>>>>>>>>>");
-			
-			/*
-			ACS.Objects.update({
-							 classname : 'MenuItem',
-							 MenuItemId : 10,
-							 fields : {
-								 Price : 20
-							 }
-						 }, function(e) {
-							 if(e.success){
-				
-								console.log("In update query>>>>>>>>>>>>");
-								res.render('price', {
-								title : 'Price updated Successfully'
-								});
-							} else {
-						 console.log("Error to update: " + e.message);
-					}
-						});*/
-			
-			
-			ACS.Objects.create({
-    classname: 'cars',
-    fields: {
-        make: 'nissan',
-        color: 'blue',
-        year: 2005
-    }
-}, function (e) {
-    if (e.success) {
-        var car = e.cars[0];
-        console.log ("make: " + car.make + "\n" + "color: " + car.color + "\n" + "year: " + car.year);
-        res.render('price', {
-								title : 'Table created Successfully'
-								});
-    } else {
-        console.log("Error to create: " + e.message);
-    }
-});
-	}  else {
-        	 console.log("Error to login: " + e.message);
-    	}
-	}, req, res);	
-			
+		}, req, res);
 }
