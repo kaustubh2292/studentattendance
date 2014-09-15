@@ -1,4 +1,4 @@
 studentattendance
 =================
 
-Student Attendance system
+Student Attendance system for mark attendance
